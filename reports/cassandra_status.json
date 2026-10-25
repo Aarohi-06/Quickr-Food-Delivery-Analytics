@@ -1,0 +1,29 @@
+{
+  "endpoint": "127.0.0.1:9042",
+  "connection_status": "unreachable_timeout",
+  "operations_attempted": [
+    "initialize",
+    "load",
+    "verify"
+  ],
+  "operation_exit_codes": [
+    1,
+    1,
+    1
+  ],
+  "rows_written_by_this_run": 0,
+  "database_rows_verified": null,
+  "csv_rows_ready": {
+    "age_band_summary": 6,
+    "city_summary": 4,
+    "distance_band_summary": 5,
+    "festival_summary": 3,
+    "order_type_summary": 4,
+    "overall_summary": 1,
+    "traffic_summary": 5,
+    "vehicle_type_summary": 4,
+    "weather_summary": 7
+  },
+  "total_csv_rows_ready": 39,
+  "required_user_action": "Start the existing Cassandra manually, then initialize, load and verify."
+}

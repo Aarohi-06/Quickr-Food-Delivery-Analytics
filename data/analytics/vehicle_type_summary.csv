@@ -1,0 +1,5 @@
+vehicle_type,delivery_count,total_duration_min,average_duration_min
+bicycle,43,1116.0,25.953488372093023
+electric_scooter,3404,83293.0,24.46915393654524
+motorcycle,24197,668105.0,27.61106748770509
+scooter,13878,340156.0,24.510448191382043

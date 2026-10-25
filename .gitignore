@@ -1,0 +1,16 @@
+# All project virtual environments
+.venv*/
+
+# Downloaded package caches
+.app-packages/
+.ml-packages/
+.spark-packages/
+
+# Spark local temporary files
+.spark-local/
+
+# Python cache
+__pycache__/
+*.pyc
+.pytest_cache/
+.ipynb_checkpoints/

@@ -1,0 +1,10 @@
+{
+  "models\\delivery_duration_pipeline.joblib": "4f44d2c2db130e84876bdde8e167d75c764eab2cfa9b3d97cb022630f08eb8ed",
+  "models\\feature_importance.csv": "001d83a4a0e2e158eca7da127d142ad83888d7f4f33b860add24c202d9701a30",
+  "models\\feature_info.json": "0aba126d6f622cfd0abc18e2cb6e1a83831852b6a1733c902a25cb0ebad08fd8",
+  "models\\metrics.json": "9a3aaa4a1e1367de5ea91890a774d8b19d698bad4103ef534225d276eaac7dfb",
+  "models\\test_predictions.csv": "e5f5f766e0448665007f1f3780ae9f8b00f130a1a18694366bcba76bec2656c7",
+  "data\\processed\\quickr_clean.csv": "18ea2ac699e82e5edc47c34196bb2490ff9ab06728a9f81f467170bf38e3f5e7",
+  "notebooks\\Quickr_PySpark_Analysis.ipynb": "ba8651a076b1a6f71c8b95c9e26d3de927de359d95892327c7a023ffb7e58b93",
+  "cassandra\\schema.cql": "1817a60697112ce08495f41b2bef210c35aa411e0497e098857181294c7a0ae6"
+}

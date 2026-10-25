@@ -1,0 +1,22 @@
+{
+  "status": "passed",
+  "session_start_count": 1,
+  "input_checks": {
+    "normal": {
+      "prediction_min": 29.513524863096677,
+      "seconds": 37.63652149999689
+    },
+    "missing": {
+      "prediction_min": 25.719471195471193,
+      "seconds": 28.691554899996845
+    },
+    "unseen": {
+      "prediction_min": 27.326104050121486,
+      "seconds": 38.860555399995064
+    }
+  },
+  "streamlit_spark_prediction": "passed",
+  "backend_specific_metrics": "passed",
+  "three_page_navigation": "passed",
+  "elapsed_seconds": 410.6007125000033
+}

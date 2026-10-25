@@ -1,0 +1,2 @@
+total_deliveries,valid_duration_deliveries,excluded_invalid_duration,total_duration_min,average_duration_min,analytical_threshold_min,deliveries_exceeding_threshold,percent_exceeding_threshold
+41522,41522,0,1092670.0,26.315447232792256,30,12443,29.967246279080967

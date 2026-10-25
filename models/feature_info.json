@@ -1,0 +1,91 @@
+{
+  "target": "duration_min",
+  "prediction_moment": "courier assignment, before pickup",
+  "numeric_features": [
+    "distance_km",
+    "delivery_person_age",
+    "delivery_person_rating",
+    "vehicle_condition",
+    "order_hour",
+    "order_day_of_week"
+  ],
+  "categorical_features": [
+    "traffic",
+    "weather",
+    "city",
+    "vehicle_type",
+    "festival",
+    "order_type"
+  ],
+  "feature_order": [
+    "distance_km",
+    "delivery_person_age",
+    "delivery_person_rating",
+    "vehicle_condition",
+    "order_hour",
+    "order_day_of_week",
+    "traffic",
+    "weather",
+    "city",
+    "vehicle_type",
+    "festival",
+    "order_type"
+  ],
+  "category_values": {
+    "traffic": [
+      "high",
+      "jam",
+      "low",
+      "medium",
+      "unknown"
+    ],
+    "weather": [
+      "cloudy",
+      "fog",
+      "sandstorms",
+      "stormy",
+      "sunny",
+      "unknown",
+      "windy"
+    ],
+    "city": [
+      "metropolitan",
+      "semi_urban",
+      "unknown",
+      "urban"
+    ],
+    "vehicle_type": [
+      "bicycle",
+      "electric_scooter",
+      "motorcycle",
+      "scooter"
+    ],
+    "festival": [
+      "no",
+      "unknown",
+      "yes"
+    ],
+    "order_type": [
+      "buffet",
+      "drinks",
+      "meal",
+      "snack"
+    ]
+  },
+  "numeric_training_medians": {
+    "distance_km": 9.192963864928403,
+    "delivery_person_age": 30.0,
+    "delivery_person_rating": 4.7,
+    "vehicle_condition": 1.0,
+    "order_hour": 19.0,
+    "order_day_of_week": 3.0
+  },
+  "excluded": [
+    "order_id",
+    "delivery_person_id",
+    "pickup_time",
+    "pickup_hour",
+    "multiple_deliveries",
+    "duration_min"
+  ]
+}

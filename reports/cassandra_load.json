@@ -1,0 +1,16 @@
+{
+  "status": "loaded",
+  "dataset_id": "clean_v1",
+  "rows_written": {
+    "traffic_summary": 5,
+    "weather_summary": 7,
+    "city_summary": 4,
+    "vehicle_type_summary": 4,
+    "festival_summary": 3,
+    "distance_band_summary": 5,
+    "age_band_summary": 6,
+    "order_type_summary": 4,
+    "overall_summary": 1
+  },
+  "total_rows_written": 39
+}

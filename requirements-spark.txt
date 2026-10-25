@@ -1,0 +1,5 @@
+# Use Python 3.11 on Windows; see reports/spark_analytics.md.
+pyspark==3.5.7
+ipykernel==7.4.0
+nbclient==0.11.0
+nbformat==5.11.1

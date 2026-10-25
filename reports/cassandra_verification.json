@@ -1,0 +1,98 @@
+{
+  "status": "verified",
+  "dataset_id": "clean_v1",
+  "tables": {
+    "traffic_summary": {
+      "rows": 5,
+      "sample": {
+        "dataset_id": "clean_v1",
+        "traffic": "high",
+        "average_duration_min": 27.21156697973307,
+        "delivery_count": 4046,
+        "total_duration_min": 110098.0
+      }
+    },
+    "weather_summary": {
+      "rows": 7,
+      "sample": {
+        "dataset_id": "clean_v1",
+        "weather": "cloudy",
+        "average_duration_min": 28.931550646708327,
+        "delivery_count": 6881,
+        "total_duration_min": 199078.0
+      }
+    },
+    "city_summary": {
+      "rows": 4,
+      "sample": {
+        "dataset_id": "clean_v1",
+        "city": "metropolitan",
+        "average_duration_min": 27.32382728354178,
+        "delivery_count": 31103,
+        "total_duration_min": 849853.0
+      }
+    },
+    "vehicle_type_summary": {
+      "rows": 4,
+      "sample": {
+        "dataset_id": "clean_v1",
+        "vehicle_type": "bicycle",
+        "average_duration_min": 25.953488372093023,
+        "delivery_count": 43,
+        "total_duration_min": 1116.0
+      }
+    },
+    "festival_summary": {
+      "rows": 3,
+      "sample": {
+        "dataset_id": "clean_v1",
+        "festival": "no",
+        "average_duration_min": 26.011927398444254,
+        "delivery_count": 40495,
+        "total_duration_min": 1053353.0
+      }
+    },
+    "distance_band_summary": {
+      "rows": 5,
+      "sample": {
+        "dataset_id": "clean_v1",
+        "distance_band": "[0,5) km",
+        "average_duration_min": 22.184857423795478,
+        "delivery_count": 11187,
+        "total_duration_min": 248182.0
+      }
+    },
+    "age_band_summary": {
+      "rows": 6,
+      "sample": {
+        "dataset_id": "clean_v1",
+        "age_band": "18-24",
+        "average_duration_min": 23.023119636547197,
+        "delivery_count": 9905,
+        "total_duration_min": 228044.0
+      }
+    },
+    "order_type_summary": {
+      "rows": 4,
+      "sample": {
+        "dataset_id": "clean_v1",
+        "order_type": "buffet",
+        "delivery_count": 10265
+      }
+    },
+    "overall_summary": {
+      "rows": 1,
+      "sample": {
+        "dataset_id": "clean_v1",
+        "analytical_threshold_min": 30,
+        "average_duration_min": 26.315447232792256,
+        "deliveries_exceeding_threshold": 12443,
+        "excluded_invalid_duration": 0,
+        "percent_exceeding_threshold": 29.967246279080967,
+        "total_deliveries": 41522,
+        "total_duration_min": 1092670.0,
+        "valid_duration_deliveries": 41522
+      }
+    }
+  }
+}

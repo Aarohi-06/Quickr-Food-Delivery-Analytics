@@ -1,0 +1,7 @@
+# Python 3.11; install in .venv-ml, not existing app or notebook environments.
+pyspark==3.5.7
+numpy==1.26.4
+scipy==1.12.0
+pyarrow==12.0.1
+# Dashboard and preserved fallback run in the same isolated Python 3.11 environment.
+-r requirements-app.txt

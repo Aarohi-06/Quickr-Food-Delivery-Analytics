@@ -1,0 +1,14 @@
+{
+  "mae_min": 3.1957298979791355,
+  "rmse_min": 4.007555897670921,
+  "r2": 0.8193063535857025,
+  "baseline_mae_min": 7.651414810355208,
+  "train_rows": 33217,
+  "test_rows": 8305,
+  "total_rows": 41522,
+  "random_state": 42,
+  "test_fraction": 0.2,
+  "python_version": "3.11.17",
+  "sklearn_version": "1.7.2",
+  "source_sha256": "18ea2ac699e82e5edc47c34196bb2490ff9ab06728a9f81f467170bf38e3f5e7"
+}

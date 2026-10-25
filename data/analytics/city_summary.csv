@@ -1,0 +1,5 @@
+city,delivery_count,total_duration_min,average_duration_min
+metropolitan,31103,849853.0,27.32382728354178
+semi_urban,147,7303.0,49.68027210884354
+unknown,1097,24252.0,22.107566089334547
+urban,9175,211262.0,23.0258310626703

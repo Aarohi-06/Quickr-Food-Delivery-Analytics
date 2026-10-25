@@ -1,0 +1,7 @@
+# Python 3.11. Keep separate from the working PySpark environment.
+pandas==2.3.3
+scikit-learn==1.7.2
+streamlit==1.50.0
+plotly==6.3.1
+cassandra-driver==3.29.3
+joblib==1.5.2
