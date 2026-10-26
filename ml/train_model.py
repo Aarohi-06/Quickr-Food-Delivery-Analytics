@@ -8,6 +8,7 @@ import csv
 import hashlib
 import json
 import math
+import os
 import statistics
 import sys
 import time
@@ -58,8 +59,17 @@ def main():
     test_id_set = set(test_ids)
     training_median = statistics.median(float(r["duration_min"]) for r in source_rows if r["order_id"] not in test_id_set)
     baseline_mae = sum(abs(float(r["actual_duration_min"])-training_median) for r in old_test)/len(old_test)
+    connector = (ROOT / ".spark-packages/spark-cassandra-connector-assembly_2.12-3.5.1.jar").as_uri()
+    os.environ["PYSPARK_SUBMIT_ARGS"] = os.environ.get(
+        "PYSPARK_SUBMIT_ARGS", "--driver-memory 2g pyspark-shell").replace(
+            "pyspark-shell", f'--jars "{connector}" pyspark-shell')
     spark = get_spark()
-    df = spark.read.option("header", True).csv(source.as_posix()).withColumn("duration_min", F.col("duration_min").cast("double"))
+    df = (spark.read.format("org.apache.spark.sql.cassandra")
+          .options(keyspace="quickr_bda", table="cleaned_delivery_records",
+                   **{"spark.cassandra.connection.host": "127.0.0.1",
+                      "spark.cassandra.connection.port": "9042"}).load()
+          .select(*[F.col(c).cast("string").alias(c) for c in source_rows[0]]))
+    df = df.withColumn("duration_min", F.col("duration_min").cast("double"))
     membership = spark.read.option("header", True).csv(test_path.as_posix()).select("order_id")
     train = df.join(membership, "order_id", "left_anti").select("order_id", *FEATURES, "duration_min").cache()
     test = df.join(membership, "order_id", "left_semi").select("order_id", *FEATURES, "duration_min").cache()

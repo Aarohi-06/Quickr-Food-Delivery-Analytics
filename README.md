@@ -126,6 +126,73 @@ cqlsh 127.0.0.1 9042 -f cassandra/demo_queries.cql
 
 Or paste its queries individually into cqlsh. Read reports/cassandra_viva.md first.
 
+## Store the original and cleaned CSV datasets
+
+This independent loader adds only `quickr_bda.original_delivery_records` and
+`quickr_bda.cleaned_delivery_records`. It reads `data/raw/food_delivery.csv`
+(45,593 records, 20 columns) and `data/processed/quickr_clean.csv`
+(41,522 records, 37 columns), including all engineered features. Actual CSV counts
+are authoritative. No preprocessing, training, analytics loading, or app startup
+is triggered. Use the existing running Cassandra server and existing keyspace.
+
+From the workspace, initialize these two tables and load/verify both CSVs:
+
+```powershell
+.\.venv-app\Scripts\python.exe scripts/load_datasets.py
+# Read-only verification on a later run:
+.\.venv-app\Scripts\python.exe scripts/load_datasets.py --verify-only
+```
+
+The loader creates only the tables defined in `cassandra/dataset_schema.cql`;
+no separate initialization is required. For schema-only initialization:
+
+```powershell
+py -2 C:\cassandra\bin\cqlsh.py 127.0.0.1 9042 -f cassandra/dataset_schema.cql
+```
+
+Each CSV column keeps its exact name (original mixed-case names require double
+quotes in CQL). Numeric fields use `int`/`double`; cleaned `order_date` uses `date`.
+Original date, time, and decorated duration strings remain text to preserve their
+source representation. Text retains whitespace and categories without cleaning.
+Blank and case-insensitive `NaN`, `null`, `none`, `NA`, `N/A`, `<NA>`, `NaT` tokens
+become Cassandra nulls. Other invalid numeric/date values stop loading with a
+source record and column error, rather than being silently dropped.
+
+`source_row_number` is a deterministic, one-based CSV record position and a
+`bigint` partition key. This preserves duplicate IDs and even identical records.
+Rerunning against the **same unchanged CSV snapshots** upserts the same keys;
+partial loads can be retried. Do not run concurrent loaders. Changed/reordered or
+shortened files are outside this snapshot contract; the loader never deletes stale
+rows, and verification rejects extra rows. Loading uses prepared inserts in chunks
+of 1,000 with at most 32 concurrent requests, prints progress, and exits nonzero on
+failure. Verification reads every stored row and compares every typed column to
+the CSV, checks counts, prints a sample, and compares existing tables before/after.
+Existing-table snapshots assume no other process is modifying those tables.
+
+Inside cqlsh:
+
+```sql
+USE quickr_bda;
+DESCRIBE TABLES;
+SELECT COUNT(*) FROM original_delivery_records;
+SELECT COUNT(*) FROM cleaned_delivery_records;
+SELECT * FROM original_delivery_records LIMIT 5;
+SELECT * FROM cleaned_delivery_records LIMIT 5;
+SELECT "ID", "Time_taken(min)" FROM original_delivery_records WHERE source_row_number = 1;
+SELECT order_id, distance_km, duration_min FROM cleaned_delivery_records WHERE source_row_number = 1;
+```
+
+Full-table `COUNT(*)` scans can time out; the loader instead verifies counts with
+paged reads. Cassandra does not provide arbitrary SQL filtering/joins. Efficient
+point queries use `source_row_number`; filtering by delivery ID or another non-key
+column generally requires `ALLOW FILTERING`, which may scan the whole table and
+should be avoided for routine queries. Result order is not CSV order.
+
+If the cleaned CSV is missing, the existing preprocessing command is
+`.\.venv\Scripts\python.exe preprocess_data.py`. It regenerates the cleaned CSV
+and its report: run it separately only when that regeneration is intended. The
+dataset loader never runs preprocessing or changes either CSV.
+
 ## Cassandra Quick Reference — Commands for Demonstration
 
 ### 1. Start Cassandra
